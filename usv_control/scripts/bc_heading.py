@@ -54,8 +54,8 @@ class Controller:
         self.T_stbd = 0 #Thrust in Newtons
 
 #Desired values subscribers
-        rospy.Subscriber("/guidance/desired_heading", Float64, self.dheading_callback)
-        rospy.Subscriber("/guidance/desired_thrust", Float64, self.dthrust_callback)
+        rospy.Subscriber("/usv_control/guidance/desired__heading", Float64, self.dheading_callback)
+        rospy.Subscriber("/usv_control/guidance/desired_thrust", Float64, self.dthrust_callback)
 
 #IMU data subscribers
         rospy.Subscriber("/vectornav/ins_2d/local_vel", Vector3, self.local_vel_callback)

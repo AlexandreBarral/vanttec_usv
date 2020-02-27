@@ -91,11 +91,11 @@ int main(int argc, char *argv[])
   ros::Publisher heading_gain_pub = n.advertise<std_msgs::Float64>("/usv_control/asmc/heading_gain", 1000);
   ros::Publisher heading_error_pub = n.advertise<std_msgs::Float64>("/usv_control/asmc/heading_error", 1000);
 
-  ros::Subscriber desired_speed_sub = n.subscribe("/guidance/desired_speed", 1000, dspeed_callback);
-  ros::Subscriber desired_heading_sub = n.subscribe("/guidance/desired_heading", 1000, dheading_callback);
+  ros::Subscriber desired_speed_sub = n.subscribe("/usv_control/guidance/desired_speed", 1000, dspeed_callback);
+  ros::Subscriber desired_heading_sub = n.subscribe("/usv_control/guidance/desired_heading", 1000, dheading_callback);
   ros::Subscriber ins_pose_sub = n.subscribe("/vectornav/ins_2d/ins_pose", 1000, ins_callback);
   ros::Subscriber local_vel_sub = n.subscribe("/vectornav/ins_2d/local_vel", 1000, vel_callback);
-  ros::Subscriber flag_sub = n.subscribe("/arduino_br/ardumotors/", 1000, flag_callback);
+  ros::Subscriber flag_sub = n.subscribe("/arduino_br/ardumotors/flag", 1000, flag_callback);
   ros::Subscriber ardu_sub = n.subscribe("arduino", 1000, ardu_callback);
 
   ros::Rate loop_rate(rate);

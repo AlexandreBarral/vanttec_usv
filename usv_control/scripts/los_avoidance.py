@@ -60,13 +60,13 @@ class Test:
         #rospy.Subscriber("/vectornav/ins_2d/ins_pose", Pose2D, self.gps_callback)
         rospy.Subscriber("/vectornav/ins_2d/ins_ref", Vector3, self.gpsref_callback)
         #rospy.Subscriber("/vectornav/ins_2d/ecef_ref", Vector3, self.ecefref_callback)
-        rospy.Subscriber("/mission/waypoints", Float32MultiArray, self.waypoints_callback)
+        rospy.Subscriber("/rb_missions/mission/mission_waypoints", Float32MultiArray, self.waypoints_callback)
         rospy.Subscriber("/usv_perception/lidar_detector/obstacles",  String, self.obstacles_callback)
 
-        self.d_speed_pub = rospy.Publisher("/guidance/desired_speed", Float64, queue_size=10)
-        self.d_heading_pub = rospy.Publisher("/guidance/desired_heading", Float64, queue_size=10)
-        self.target_pub = rospy.Publisher("/usv_control/los/target", Pose2D, queue_size=10)
-        self.LOS_pub = rospy.Publisher("/usv_control/los/los", Pose2D, queue_size=10)
+        self.d_speed_pub = rospy.Publisher("/usv_control/guidance/desired_speed", Float64, queue_size=10)
+        self.d_heading_pub = rospy.Publisher("/usv_control/guidance/desired_heading", Float64, queue_size=10)
+        self.target_pub = rospy.Publisher("/usv_control/los_avoidance/target", Pose2D, queue_size=10)
+        self.LOS_pub = rospy.Publisher("/usv_control/los_avoidance/los", Pose2D, queue_size=10)
 
     def ned_callback(self, ned):
         self.NEDx = ned.x

@@ -40,13 +40,13 @@ class USVMaster:
 
         #ROS Subscribers
         rospy.Subscriber("/usv_comms/boat_transceiver/course_config", String, self.mission_callback) 
-        rospy.Subscriber("/mission_status", Int32, self.mission_status_callback)
+        rospy.Subscriber("/usv_master/usv_master/mission_status", Int32, self.mission_status_callback)
         rospy.Subscriber("/usv_comms/boat_transceiver/stop_mission", Empty, self.stop_mission_callback)
         rospy.Subscriber("/usv_comms/boat_transceiver/start_mission", Empty , self.start_mission_callback)
 
         ##Ros Publishers
         self.dataframe_pub = rospy.Publisher('/vanttec_usv/usv_master/usv_data', String, queue_size=10)
-        self.boat_current_mission_pub = rospy.Publisher('/usv_master/usv_master_status', String, queue_size=10)
+        self.boat_current_mission_pub = rospy.Publisher('/usv_master/usv_master/usv_master_status', String, queue_size=10)
     
     #Callbacks
     def mission_callback(self,xbee_message):

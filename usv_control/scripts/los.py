@@ -42,10 +42,10 @@ class Test:
 
         rospy.Subscriber("/vectornav/ins_2d/NED_pose", Pose2D, self.gps_callback)
         rospy.Subscriber("/vectornav/ins_2d/ins_ref", Pose2D, self.gpsref_callback)
-        rospy.Subscriber("/mission/waypoints", Float32MultiArray, self.waypoints_callback)
+        rospy.Subscriber("/rb_missions/mission/mission_waypoints", Float32MultiArray, self.waypoints_callback)
 
-        self.d_speed_pub = rospy.Publisher("/guidance/desired_speed", Float64, queue_size=10)
-        self.d_heading_pub = rospy.Publisher("/guidance/desired_heading", Float64, queue_size=10)
+        self.d_speed_pub = rospy.Publisher("/usv_control/guidance/desired_speed", Float64, queue_size=10)
+        self.d_heading_pub = rospy.Publisher("/usv_control/guidance/desired_heading", Float64, queue_size=10)
         self.target_pub = rospy.Publisher("/usv_control/los/target", Pose2D, queue_size=10)
         self.LOS_pub = rospy.Publisher("/usv_control/los/los", Pose2D, queue_size=10)
 
